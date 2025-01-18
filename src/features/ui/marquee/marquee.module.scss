@@ -1,0 +1,85 @@
+.carouselContainer {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  .carouselTrack {
+    display: flex;
+    position: relative;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    gap: 1rem;
+    width: fit-content;
+    height: fit-content;
+    overflow: hidden;
+    will-change: transform;
+  }
+
+  .vertical {
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .verticalReverse {
+    position: relative;
+    flex-direction: column-reverse;
+    overflow: hidden;
+  }
+}
+
+.carouselCard {
+  width: 100%;
+  height: fit-content;
+  cursor: pointer;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  position: relative;
+
+  .carouselBadge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .carouselBadgeSmall {
+    top: 0.7rem;
+    right: 0.55rem;
+  }
+
+  .carouselCardImg {
+    object-fit: cover;
+    object-position: 50% 50%;
+    position: relative;
+    z-index: -1;
+    will-change: transform;
+  }
+
+  .carouselVideoContainer {
+    display: inline-block;
+    position: relative;
+
+    .thumbnail {
+      object-fit: cover;
+      object-position: 50% 50%;
+      position: relative;
+      box-sizing: border-box;
+      border: 2px solid transparent;
+      z-index: -2;
+      will-change: transform;
+    }
+
+    .carouselCardVideo {
+      object-fit: cover;
+      object-position: 50% 50%;
+      position: absolute;
+      top: 0;
+      z-index: -1;
+      will-change: transform;
+    }
+  }
+}

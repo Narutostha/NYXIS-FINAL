@@ -1,0 +1,56 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+.privacyScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 850;
+}
+
+.errorPage {
+  width: 100lvw;
+  height: 100lvh;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.errorButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+/* HERO SECTION FOR DESIGN & CREATIVE PAGES */
+.heroContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  max-width: var(--max-width);
+  padding: 0 var(--content-padding);
+  position: relative;
+  top: 100px;
+}
+
+@media screen and (width <= 800px) {
+  .heroContainer {
+    padding: 0 var(--content-padding-sm);
+  }
+}

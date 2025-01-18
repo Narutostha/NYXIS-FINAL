@@ -1,0 +1,134 @@
+@mixin title($max-width, $font-size) {
+  max-width: $max-width;
+  font-size: $font-size;
+  color: #fff;
+  line-height: 100%;
+  font-weight: 700;
+}
+
+@mixin description($max-width, $font-size) {
+  max-width: $max-width;
+  font-size: $font-size;
+}
+
+.accordion {
+  width: 100%;
+  position: relative;
+  padding-top: 120px;
+
+  .heading {
+    color: var(--white-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-left: var(--content-padding);
+    margin-bottom: 2rem;
+
+    @media screen and (width <= 1000px) {
+      padding-left: 0;
+      text-align: center;
+      font-size: 1.25rem;
+    }
+  }
+
+  .faqHeading {
+    text-align: left;
+    padding-left: var(--content-padding);
+
+    @media screen and (width <= 1000px) {
+      padding-left: var(--content-padding-sm);
+    }
+  }
+
+  .accordionSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    padding: 70px var(--content-padding);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    height: 285px;
+
+    @media screen and (width <= 1000px) {
+      height: auto;
+      padding: 70px var(--content-padding-sm);
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2.5rem;
+      margin: var(--content-padding-sm);
+      border: none;
+      cursor: auto;
+    }
+
+    .noWrap {
+      white-space: nowrap;
+    }
+
+    .accordionTitleService {
+      @include title(50%, 4.5rem);
+
+      @media screen and (width <= 1250px) {
+        white-space: normal;
+        font-size: clamp(2.5rem, 4.75lvw, 4rem);
+      }
+
+      @media screen and (width <= 1000px) {
+        @include title(100%, 2.5rem);
+      }
+
+      @media screen and (width <= 400px) {
+        font-size: clamp(1.9rem, 4lvw, 2.5rem);
+      }
+    }
+
+    .descriptionServices {
+      @include description(40%, 1rem);
+
+      @media screen and (width <= 1000px) {
+        @include description(100%, 1rem);
+      }
+    }
+  }
+
+  // FAQ SECTION
+
+  .faqSection {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 240px;
+    position: relative;
+    padding: 0 var(--content-padding);
+    gap: 1rem;
+
+    @media screen and (width <= 1000px) {
+      padding: 70px var(--content-padding-sm);
+      height: auto;
+    }
+
+    .accordionTitleFaq {
+      @include title(100%, 2rem);
+
+      @media screen and (width <= 1450px) {
+        white-space: normal;
+      }
+    }
+
+    .descriptionFaq {
+      @include description(max-content, 1rem);
+
+      width: calc(100lvw - var(--content-padding) * 2);
+      display: inline-block;
+      position: absolute;
+      margin-right: var(--content-padding);
+
+      @media screen and (width <= 1000px) {
+        width: auto;
+        position: relative;
+        margin-top: 1.25rem;
+        margin-right: 0;
+      }
+    }
+  }
+}

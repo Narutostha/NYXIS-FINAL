@@ -1,0 +1,281 @@
+@mixin orb($color, $direction) {
+  width: 100svh;
+  height: 100svh;
+  background-color: $color;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.45;
+  position: absolute;
+  z-index: 1;
+  #{$direction}: -20%;
+  top: 0;
+  overflow: hidden;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+
+  @media screen and (width <=1100px) {
+    width: 70svw;
+    height: 70svw;
+    top: 25svh;
+    #{$direction}: -35%;
+  }
+
+  @media screen and (width <=550px) {
+    width: 70svw;
+    height: 100svw;
+    #{$direction}: -40%;
+  }
+}
+
+.homeContainer {
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .orangeOrb {
+    @include orb(var(--ez-orange), left);
+  }
+
+  .purpleOrb {
+    @include orb(var(--adobe-purple), right);
+  }
+
+  .policyLinks {
+    display: flex;
+    gap: 0.75rem;
+    position: absolute;
+    font-size: 0.75rem;
+    bottom: 28px;
+    left: 0;
+    width: 100lvw;
+    justify-content: center;
+    padding-right: 0;
+    z-index: 900;
+
+    @media screen and (width <=1200px) {
+      bottom: 1rem;
+    }
+
+    .link {
+      color: #fff;
+      width: fit-content;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        margin-top: 0.25rem;
+        left: 50%;
+        width: 0;
+        height: 1px;
+        background: #fff;
+        transition:
+          width 0.2s ease-in-out,
+          left 0.2s ease-in-out;
+      }
+
+      &:hover::after {
+        width: 100%;
+        left: 0;
+      }
+    }
+  }
+
+  .homeWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    z-index: 100;
+
+    .homeTitleContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100dvh;
+      width: max-content;
+      position: fixed;
+      top: 0;
+
+      .homeTitle {
+        font-weight: 900;
+        font-size: 7.3rem;
+        text-transform: uppercase;
+        line-height: 100%;
+
+        @media screen and (width <=1000px) {
+          font-size: clamp(4rem, 10lvw, 6rem);
+        }
+
+        @media screen and (width <=415px) {
+          font-size: clamp(2.75rem, 10lvw, 5rem);
+        }
+      }
+    }
+
+    .dualPageContainer {
+      justify-content: center;
+      align-items: center;
+
+      @media screen and (width <=1200px) {
+        flex-direction: column;
+        height: auto;
+        margin-bottom: 1rem;
+      }
+
+      .divider {
+        height: calc(100lvh - 82px);
+        background-color: #fff;
+        width: 2px;
+        opacity: 0.5;
+
+        @media screen and (width <=1200px) {
+          display: none;
+        }
+      }
+
+      .blurLeft {
+        position: absolute;
+        z-index: 700;
+        right: 50%;
+        width: 115px;
+        height: 100%;
+        background: linear-gradient(
+          270deg,
+          #010101 0%,
+          rgb(1 1 1 / 70%) 49.73%,
+          rgb(1 1 1 / 0%) 100%
+        );
+
+        @media screen and (width <=1200px) {
+          display: none;
+        }
+      }
+
+      .blurRight {
+        position: absolute;
+        z-index: 700;
+        left: 50%;
+        width: 115px;
+        height: 100%;
+        background: linear-gradient(
+          -270deg,
+          #010101 0%,
+          rgb(1 1 1 / 70%) 49.73%,
+          rgb(1 1 1 / 0%) 100%
+        );
+
+        @media screen and (width <=1200px) {
+          display: none;
+        }
+      }
+
+      /* PAGE PORTAL */
+      .pagePortalContainer {
+        width: calc(50lvw - 2px);
+        height: 100lvh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+
+        @media screen and (width <=1200px) {
+          width: 100lvw;
+          padding: 4rem 0;
+          height: fit-content;
+          flex-direction: column;
+          position: relative;
+        }
+
+        @media screen and (height <=550px) {
+          overflow-y: scroll;
+        }
+
+        .pagePortalTitle {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          position: absolute;
+          z-index: 2;
+
+          @media screen and (width <=1200px) {
+            position: relative;
+          }
+
+          .title {
+            text-transform: uppercase;
+            font-weight: 900;
+            font-size: 6.625rem;
+            cursor: default;
+
+            @media screen and (width <=800px) {
+              font-size: clamp(4rem, 10lvw, 6rem);
+            }
+          }
+        }
+
+        .portalContent {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 40px;
+          width: 100%;
+
+          @media screen and (width <=800px) {
+            font-size: 80%;
+            gap: 25px;
+          }
+
+          .portalLogo {
+            width: 200px;
+            height: 200px;
+
+            @media screen and (width <=1200px) {
+              display: none;
+            }
+          }
+
+          .portalBottom {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+
+            @media screen and (width <=1200px) {
+              flex-direction: column-reverse;
+            }
+
+            .tagListContainer {
+              font-size: 1rem;
+              display: flex;
+              gap: 0.75rem;
+
+              @media screen and (width <=800px) {
+                font-size: 0.7rem;
+              }
+
+              @media screen and (width <=600px) {
+                font-size: 2.25lvw;
+              }
+            }
+
+            .homeButton {
+              @media screen and (width <=800px) {
+                padding: 20px var(--content-padding);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
