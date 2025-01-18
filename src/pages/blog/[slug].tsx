@@ -100,7 +100,7 @@ export default function BlogPostPage({ post, toc }: BlogPostPageProps) {
         <BlogHeader />
         <div className={styles.notFound}>
           <h1>Post Not Found</h1>
-          <p>The blog post you're looking for doesn't exist.</p>
+          <p>The blog post you&apos;re looking for doesn&apos;t exist.</p>
         </div>
         <BlogFooter />
       </>

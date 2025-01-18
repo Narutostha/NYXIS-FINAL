@@ -1,11 +1,14 @@
 import { useInView } from "framer-motion";
 import React, { useRef, useState, useEffect } from "react";
+import Image from "next/image";
 
-interface VideoUIProps extends React.HTMLAttributes<HTMLVideoElement> {
+interface VideoUIProps {
   src: string;
   thumbnail?: string;
   autoplay?: boolean;
   muted?: boolean;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 export function VideoUI({
@@ -13,7 +16,8 @@ export function VideoUI({
   thumbnail,
   autoplay = true,
   muted = true,
-  ...props
+  className,
+  style,
 }: VideoUIProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [shouldUseImage, setShouldUseImage] = useState(false);
@@ -54,19 +58,28 @@ export function VideoUI({
   }, [isInView, autoplay, muted]);
 
   if (shouldUseImage) {
-    return <img src={thumbnail || src} alt="Video thumbnail" {...props} />;
+    return (
+      <Image
+        src={thumbnail || src}
+        alt="Video thumbnail"
+        width={500}
+        height={300}
+        className={className}
+        style={{ ...style, objectFit: 'cover' }}
+      />
+    );
   }
 
   return (
     <video
       ref={videoRef}
-      className={props.className}
+      className={className}
+      style={style}
       poster={thumbnail}
       loop
       muted={muted}
       playsInline
       preload="metadata"
-      {...props}
     >
       <source src={src} type="video/mp4" />
       Your browser does not support the video tag.
